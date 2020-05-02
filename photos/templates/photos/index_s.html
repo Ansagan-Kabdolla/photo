@@ -1,0 +1,39 @@
+{% extends 'photos/base.html' %}
+{% load static %}
+{% block main %}
+<style>
+    .content_new{
+        display:flex;
+        justify-content:center;
+        flex-wrap:wrap;
+    }
+    .example_photos{
+        border-radius:5px;
+        border:2px solid black;
+        padding:5px;
+        color:blue;
+        margin:20px;
+        text-align:center;
+        width:300px;
+    }
+    .example_photos img{
+        width:200px;
+    }
+    .content_new h2{
+        font-size:40px;
+        color:gray;
+        text-align:center;
+    }
+</style>
+    <div class = 'content_new'>
+        {% for ex in example %}
+            <div class = 'example_photos'>
+                <img src="{{ex.image.url}}">
+                <p style='color:gray'>{{ex.name}}</p>
+                <p>{{ex.description}}</p>
+            </div>
+        {% empty %}
+        <h2>Извините<br>данный раздел еще не дополнен</h2>
+        {% endfor %}
+    </div>
+{% endblock %}
